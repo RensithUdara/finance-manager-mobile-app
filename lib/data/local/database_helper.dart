@@ -1,9 +1,10 @@
 import 'dart:async';
+
 import '../../domain/entities/expense.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
-  static List<Expense> _expenses = [];
+  static final List<Expense> _expenses = [];
   static int _currentId = 1;
 
   DatabaseHelper._internal();
@@ -22,48 +23,7 @@ class DatabaseHelper {
   }
 
   void _addSampleData() {
-    _expenses.addAll([
-      Expense(
-        id: _currentId++,
-        title: 'Coffee Shop',
-        amount: 250.0,
-        category: 'Food & Dining',
-        date: DateTime.now().subtract(const Duration(days: 1)),
-        description: 'Morning coffee',
-      ),
-      Expense(
-        id: _currentId++,
-        title: 'Grocery Shopping',
-        amount: 1500.0,
-        category: 'Food & Dining',
-        date: DateTime.now().subtract(const Duration(days: 2)),
-        description: 'Weekly groceries',
-      ),
-      Expense(
-        id: _currentId++,
-        title: 'Bus Ticket',
-        amount: 45.0,
-        category: 'Transportation',
-        date: DateTime.now().subtract(const Duration(days: 3)),
-        description: 'Daily commute',
-      ),
-      Expense(
-        id: _currentId++,
-        title: 'Movie Ticket',
-        amount: 300.0,
-        category: 'Entertainment',
-        date: DateTime.now().subtract(const Duration(days: 4)),
-        description: 'Weekend movie',
-      ),
-      Expense(
-        id: _currentId++,
-        title: 'New Shirt',
-        amount: 800.0,
-        category: 'Shopping',
-        date: DateTime.now().subtract(const Duration(days: 5)),
-        description: 'Casual wear',
-      ),
-    ]);
+    // No sample data - start with empty list
   }
 
   Future<int> insertExpense(Expense expense) async {
