@@ -10,6 +10,9 @@ import 'presentation/pages/home_screen.dart';
 import 'presentation/pages/splash_screen.dart';
 import 'presentation/pages/add_expense_screen.dart';
 import 'presentation/pages/analytics_screen.dart';
+import 'presentation/pages/expenses_screen.dart';
+import 'presentation/pages/categories_screen.dart';
+import 'presentation/pages/settings_screen.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -56,6 +59,9 @@ class MyApp extends StatelessWidget {
               '/home': (context) => const HomeScreen(),
               '/add-expense': (context) => const AddExpenseScreen(),
               '/analytics': (context) => const AnalyticsScreen(),
+              '/expenses': (context) => const ExpensesScreen(),
+              '/categories': (context) => const CategoriesScreen(),
+              '/settings': (context) => const SettingsScreen(),
             },
             debugShowCheckedModeBanner: false,
           );
