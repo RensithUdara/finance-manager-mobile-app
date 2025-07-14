@@ -18,7 +18,7 @@ class CategorySelector extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        childAspectRatio: 0.9,
+        childAspectRatio: 1.0,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
       ),
@@ -31,7 +31,7 @@ class CategorySelector extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () => onCategorySelected(category.name),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
@@ -52,7 +52,7 @@ class CategorySelector extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: isSelected
                       ? category.color.withOpacity(0.5)
@@ -63,40 +63,46 @@ class CategorySelector extends StatelessWidget {
                     ? [
                         BoxShadow(
                           color: category.color.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
+                          blurRadius: 6,
+                          offset: const Offset(0, 3),
                         ),
                       ]
                     : [],
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      margin: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: isSelected
                             ? Colors.white.withOpacity(0.2)
                             : category.color.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Icon(
-                        category.icon,
-                        color: isSelected ? Colors.white : category.color,
-                        size: 20,
+                      child: Center(
+                        child: Icon(
+                          category.icon,
+                          color: isSelected ? Colors.white : category.color,
+                          size: 18,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 6),
-                    Flexible(
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Text(
-                        category.name.length > 8
-                            ? '${category.name.substring(0, 7)}...'
+                        category.name.length > 6
+                            ? '${category.name.substring(0, 5)}...'
                             : category.name,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 9,
                           color: isSelected ? Colors.white : Colors.grey[700],
                           fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
                         ),
@@ -105,8 +111,8 @@ class CategorySelector extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
