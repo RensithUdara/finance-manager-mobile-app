@@ -18,7 +18,7 @@ class CategorySelector extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        childAspectRatio: 0.85,
+        childAspectRatio: 0.9,
         crossAxisSpacing: 12,
         mainAxisSpacing: 12,
       ),
@@ -70,37 +70,40 @@ class CategorySelector extends StatelessWidget {
                     : [],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: isSelected
                             ? Colors.white.withOpacity(0.2)
                             : category.color.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Icon(
                         category.icon,
                         color: isSelected ? Colors.white : category.color,
-                        size: 24,
+                        size: 20,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      category.name.length > 8
-                          ? '${category.name.substring(0, 8)}...'
-                          : category.name,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: isSelected ? Colors.white : Colors.grey[700],
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                    const SizedBox(height: 6),
+                    Flexible(
+                      child: Text(
+                        category.name.length > 8
+                            ? '${category.name.substring(0, 7)}...'
+                            : category.name,
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: isSelected ? Colors.white : Colors.grey[700],
+                          fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
